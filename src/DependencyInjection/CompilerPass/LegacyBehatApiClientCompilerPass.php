@@ -81,8 +81,8 @@ final class LegacyBehatApiClientCompilerPass implements CompilerPassInterface
                     new Reference('test.client'),
                     new Reference('sylius.behat.shared_storage'),
                     '%sylius.api.authorization_header%',
-                    $section,
                     $resourcePlural,
+                    $section,
                 ])
                 ->setPublic(true)
             ;
