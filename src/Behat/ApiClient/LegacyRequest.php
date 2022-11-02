@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle\Behat\ApiClient;
 
+use Sylius\Behat\Client\Request;
+use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 final class LegacyRequest implements LegacyRequestInterface
@@ -280,4 +282,8 @@ final class LegacyRequest implements LegacyRequestInterface
     }
 }
 
-class_alias(LegacyRequest::class, '\\Sylius1_11\\Behat\\Client\\Request');
+if (Kernel::VERSION_ID < 11200) {
+    class_alias(Request::class, '\\Sylius1_11\\Behat\\Client\\Request');
+} else {
+    class_alias(LegacyRequest::class, '\\Sylius1_11\\Behat\\Client\\Request');
+}

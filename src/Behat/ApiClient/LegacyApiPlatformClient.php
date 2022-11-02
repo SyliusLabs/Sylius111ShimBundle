@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle\Behat\ApiClient;
 
+use Sylius\Behat\Client\ApiPlatformClient;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Bundle\CoreBundle\Application\Kernel;
 use SyliusLabs\Sylius111ShimBundle\Behat\ApiClient\LegacyRequest as Request;
 use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -266,4 +268,8 @@ final class LegacyApiPlatformClient implements LegacyApiClientInterface
     }
 }
 
-class_alias(LegacyApiPlatformClient::class, '\\Sylius1_11\\Behat\\Client\\ApiPlatformClient');
+if (Kernel::VERSION_ID < 11200) {
+    class_alias(ApiPlatformClient::class, '\\Sylius1_11\\Behat\\Client\\ApiPlatformClient');
+} else {
+    class_alias(LegacyApiPlatformClient::class, '\\Sylius1_11\\Behat\\Client\\ApiPlatformClient');
+}
