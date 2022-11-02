@@ -12,8 +12,6 @@
 declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle\Behat\ApiClient;
-use Sylius\Behat\Client\RequestInterface;
-use Sylius\Bundle\CoreBundle\Application\Kernel;
 
 interface LegacyRequestInterface
 {
@@ -101,10 +99,4 @@ interface LegacyRequestInterface
     public function removeSubResource(string $subResource, string $id): void;
 
     public function authorize(?string $token, string $authorizationHeader): void;
-}
-
-if (Kernel::VERSION_ID < 11200) {
-    class_alias(RequestInterface::class, '\\Sylius1_11\\Behat\\Client\\RequestInterface');
-} else {
-    class_alias(LegacyRequestInterface::class, '\\Sylius1_11\\Behat\\Client\\RequestInterface');
 }

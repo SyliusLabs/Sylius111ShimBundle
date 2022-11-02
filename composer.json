@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "SyliusLabs\\Sylius111ShimBundle\\": "src/"
-        }
+        },
+        "files": [
+            "src/aliases.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

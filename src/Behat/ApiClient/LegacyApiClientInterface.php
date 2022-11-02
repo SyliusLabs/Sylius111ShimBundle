@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle\Behat\ApiClient;
 
-use Sylius\Behat\Client\ApiClientInterface;
-use Sylius\Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -88,10 +86,4 @@ interface LegacyApiClientInterface
     public function getLastResponse(): Response;
 
     public function getToken(): ?string;
-}
-
-if (Kernel::VERSION_ID < 11200) {
-    class_alias(ApiClientInterface::class, '\\Sylius1_11\\Behat\\Client\\ApiClientInterface');
-} else {
-    class_alias(LegacyApiClientInterface::class, 'Sylius1_11\\Behat\\Client\\ApiClientInterface');
 }
