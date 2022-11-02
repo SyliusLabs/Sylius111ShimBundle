@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle;
 
+use SyliusLabs\Sylius111ShimBundle\DependencyInjection\CompilerPass\BehatEmailSpoolHookCompilerPass;
 use SyliusLabs\Sylius111ShimBundle\DependencyInjection\CompilerPass\LegacyBehatApiClientCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
@@ -23,6 +24,7 @@ final class SyliusLabsSylius111ShimBundle extends Bundle
     public function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(new LegacyBehatApiClientCompilerPass());
+        $container->addCompilerPass(new BehatEmailSpoolHookCompilerPass());
     }
 
     public function getContainerExtension(): ?ExtensionInterface

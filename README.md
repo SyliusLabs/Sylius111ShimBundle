@@ -36,3 +36,6 @@ To make it easier, we've created a legacy client that can be used in plugins sup
 - `Sylius\Behat\Client\ApiPlatformClient` from Sylius 1.12 became incompatible with `Sylius\Behat\Client\ApiPlatformClient` from Sylius 1.11 and earlier. To make it compatible, use `Sylius1_11\Behat\Client\ApiPlatformClient` instead
 - `Sylius\Behat\Client\RequestInterface` from Sylius 1.12 became incompatible with `Sylius\Behat\Client\RequestInterface` from Sylius 1.11 and earlier. To make it compatible, use `Sylius1_11\Behat\Client\RequestInterface` instead
 - `Sylius\Behat\Client\Request` from Sylius 1.12 became incompatible with `Sylius\Behat\Client\Request` from Sylius 1.11 and earlier. To make it compatible, use `Sylius1_11\Behat\Client\Request` instead
+
+### Restore `sylius.behat.context.hook.email_spool` service
+`sylius.behat.context.hook.email_spool` has been replace by `sylius.behat.context.hook.mailer`. This shim adds an alias pointing the old name to the new one.
