@@ -89,8 +89,8 @@ final class LegacyBehatApiClientCompilerPass implements CompilerPassInterface
             $container->setDefinition($serviceId, $apiClientDefinition);
         }
 
-        if ($container->hasDefinition('sylius.behat.api_platform_client.admin.administrators') && !$container->hasDefinition('sylius.behat.api_platform_client.administrator')) {
-            $container->setAlias('sylius.behat.api_platform_client.administrator', 'sylius.behat.api_platform_client.admin.administrators');
+        if ($container->hasDefinition('sylius.behat.api_platform_client.admin.administrator') && !$container->hasDefinition('sylius.behat.api_platform_client.administrator')) {
+            $container->setAlias('sylius.behat.api_platform_client.administrator', 'sylius.behat.api_platform_client.admin.administrator');
         }
 
         $abstractApiPlatformClientDefinition = new Definition(LegacyApiPlatformClient::class);

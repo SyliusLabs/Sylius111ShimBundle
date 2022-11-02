@@ -53,8 +53,8 @@ final class LegacyBehatApiClientCompilerPassTest extends TestCase
 
     public function legacyApiPlatformClientServiceIdsProvider(): iterable
     {
-        foreach (LegacyBehatApiClientCompilerPass::LEGACY_BEHAT_API_CLIENT_RESOURCES as [$resource, $section]) {
-            yield [sprintf('sylius.behat.api_platform_client.%s.%s', $section, $resource)];
+        foreach (LegacyBehatApiClientCompilerPass::LEGACY_BEHAT_API_CLIENT_RESOURCES as [$resourceSingular, $resourcePlural, $section]) {
+            yield [sprintf('sylius.behat.api_platform_client.%s.%s', $section, $resourceSingular)];
         }
     }
 
