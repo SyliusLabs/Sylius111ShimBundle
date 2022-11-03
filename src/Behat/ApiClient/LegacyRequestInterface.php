@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle\Behat\ApiClient;
 
-interface LegacyRequestInterface
+use Sylius\Behat\Client\RequestInterface;
+
+interface LegacyRequestInterface extends RequestInterface
 {
     public static function index(
         ?string $section,
