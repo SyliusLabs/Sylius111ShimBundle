@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace SyliusLabs\Sylius111ShimBundle\Behat\ApiClient;
 
+use Sylius\Behat\Client\RequestInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,7 +27,7 @@ interface LegacyApiClientInterface
 
     public function show(string $id): Response;
 
-    public function create(?LegacyRequestInterface $request = null): Response;
+    public function create(LegacyRequestInterface|RequestInterface|null $request = null): Response;
 
     public function update(): Response;
 
@@ -44,7 +45,7 @@ interface LegacyApiClientInterface
 
     public function upload(): Response;
 
-    public function executeCustomRequest(LegacyRequestInterface $request): Response;
+    public function executeCustomRequest(LegacyRequestInterface|RequestInterface $request): Response;
 
     public function buildCreateRequest(): void;
 

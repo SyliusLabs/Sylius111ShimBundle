@@ -83,6 +83,9 @@ final class LegacyBehatApiClientCompilerPass implements CompilerPassInterface
                     '%sylius.api.authorization_header%',
                     $resourcePlural,
                     $section,
+                    $container->has('sylius.behat.api_platform_client.shop') ? new Reference('sylius.behat.api_platform_client.shop') : null,
+                    $container->has('sylius.behat.api_platform_client.admin') ? new Reference('sylius.behat.api_platform_client.admin') : null,
+                    $container->has('sylius.behat.request_factory') ? new Reference('sylius.behat.request_factory') : null,
                 ])
                 ->setPublic(true)
             ;
