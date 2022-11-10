@@ -1,7 +1,5 @@
 # Sylius 1.11 Shim Bundle
 
-> ⚠️ This package is considered unstable and under active development until 1.x release.
-
 ## ⚙️ Installation
 
 1. Require the bundle with composer:
