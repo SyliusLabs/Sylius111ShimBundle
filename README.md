@@ -37,3 +37,40 @@ To make it easier, we've created a legacy client that can be used in plugins sup
 
 ### Restore `sylius.behat.context.hook.email_spool` service
 `sylius.behat.context.hook.email_spool` has been replace by `sylius.behat.context.hook.mailer`. This shim adds an alias pointing the old name to the new one.
+
+## 📝 Examples
+
+### Already using one of services with changed signatures.
+
+Just replace `Sylius` with `Sylius1_11`. All services with changed signatures has been aliased to this scheme of naming.
+
+```diff
+use Behat\Behat\Context\Context;
+-use Sylius\Behat\Client\ApiClientInterface;
+use Sylius\Behat\Client\ResponseCheckerInterface;
+use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\LoyaltyPlugin\Domain\Model\CustomerInterface;
++use Sylius1_11\Behat\Client\ApiClientInterface;
+use Webmozart\Assert\Assert;
+
+final class ManagingLoyaltyContext implements Context
+{
+    public function __construct(
+        private ApiClientInterface $apiAdminClient,
+        private SharedStorageInterface $sharedStorage,
+        private ResponseCheckerInterface $responseChecker,
+    ) {
+    }
+```
+
+### Having an API Client for a custom resource
+
+Replace `sylius.behat.api_platform_client` parent declaration with `sylius.behat.api_platform_client.legacy` and `Sylius\Behat\Client\ApiPlatformClient` class with `Sylius1_11\Behat\Client\ApiPlatformClient`.
+
+```diff
+-<service id="app.behat.api_platform_client.admin.points" class="Sylius\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client">
++<service id="app.behat.api_platform_client.admin.points" class="Sylius1_11\Behat\Client\ApiPlatformClient" parent="sylius.behat.api_platform_client.legacy">
+    <argument>loyalty-points-accounts</argument>
+    <argument>admin</argument>
+</service>
+```
